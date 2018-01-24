@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 
 public class Program
 {
-    public static void Main()
-    {
-        Console.WriteLine("Hello");
-        Console.ReadLine();
-    }
+	public static void Main()
+	{
+		Console.WriteLine("Hello World!");
+		Console.ReadLine();
+	}
 }
