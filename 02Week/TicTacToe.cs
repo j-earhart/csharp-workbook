@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 public class Program
 {
@@ -12,12 +12,12 @@ public class Program
 
     public static void Main()
     {
-        do 
+        do
         {
             DrawBoard();
             GetInput();
 
-        } while (!CheckForWin() && !CheckForTie())
+        } while (!CheckForWin() && !CheckForTie());
 
         // leave this command at the end so your program does not close automatically
         Console.ReadLine();
@@ -30,11 +30,17 @@ public class Program
         int row = Int32.Parse(Console.ReadLine());
         Console.WriteLine("Enter Column:");
         int column = Int32.Parse(Console.ReadLine());
+        PlaceMark(row, column);
+        CheckForWin();
+        playerTurn = (playerTurn == "X") ? "O" : "X";
     }
+
 
     public static void PlaceMark(int row, int column)
     {
-       // your code goes here
+
+        // your code goes here
+        board[row][column] = playerTurn;
     }
 
     public static bool CheckForWin()
@@ -50,18 +56,25 @@ public class Program
 
         return false;
     }
-    
+
     public static bool HorizontalWin()
     {
-       // your code goes here
-
-       return false;
+        // your code goes here
+        return (board[0][0] == playerTurn && board[0][1] ==
+            playerTurn && board[0][2] == playerTurn);
+        return (board[1][0] == playerTurn && board[1][1] ==
+            playerTurn && board[1][2] == playerTurn);
+        return (board[2][0] == playerTurn && board[2][1] == 
+            playerTurn && board[2][2] == playerTurn);
+        return false;
     }
 
     public static bool VerticalWin()
     {
         // your code goes here
-
+        return (board[0][0] == playerTurn && board[1][0] == playerTurn && board[2][0] == playerTurn);
+        return (board[0][1] == playerTurn && board[1][1] == playerTurn && board[2][1] == playerTurn);
+        return (board[0][2] == playerTurn && board[1][2] == playerTurn && board[2][2] == playerTurn);
         return false;
     }
 
