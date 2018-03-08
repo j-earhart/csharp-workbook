@@ -28,30 +28,45 @@ public class Program
         char[] guess = new char[4];
         Console.WriteLine("Enter Guess:");
         guess = Console.ReadLine().ToCharArray();
+        CheckSolution(guess);
         return;
     }
     
     public static bool CheckSolution(char[] guess)
     {
         // Your code here
+        string GuessString = String.Join("", guess);
+        string SolutionString = String.Join("", solution);
+
+        if (GuessString == SolutionString)
+        {
+            return true;
+        }
+
         return false;
     }
     
     public static string GenerateHint(char[] guess)
     {
         // Your code here
+        char[] solutionClone = (char[])solution.Clone();
+        int correctLetterLocations = 0;
+        for (int i = 0; i < solutionClone.Length; i++)
+        {
+
+        }
         return " ";
     }
     
     public static void InsertCode(char[] guess)
     {
         // Your code here
-        return;
+        return; 
     }
     
     public static void CreateBoard()
     {
-        for (var i = 0; i < allowedAttempts; i++)
+        for (int i = 0; i < allowedAttempts; i++)
         {
             board[i] = new string[codeSize + 1];
             for (var j = 0; j < codeSize + 1; j++)

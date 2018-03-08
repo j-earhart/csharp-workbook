@@ -32,7 +32,15 @@ public class Program
         int column = Int32.Parse(Console.ReadLine());
         PlaceMark(row, column);
         CheckForWin();
-        playerTurn = (playerTurn == "X") ? "O" : "X";
+        //playerTurn = (playerTurn == "X") ? "O" : "X";
+        if(playerTurn == "X")
+        {
+            playerTurn = "O";
+        }
+        else
+        {
+            playerTurn = "X";
+        }
     }
 
 
@@ -73,9 +81,9 @@ public class Program
     {
         // your code goes here
         return (board[0][0] == playerTurn && board[1][0] == playerTurn && board[2][0] == playerTurn);
-        return (board[0][1] == playerTurn && board[1][1] == playerTurn && board[2][1] == playerTurn);
-        return (board[0][2] == playerTurn && board[1][2] == playerTurn && board[2][2] == playerTurn);
-        return false;
+        //return (board[0][1] == playerTurn && board[1][1] == playerTurn && board[2][1] == playerTurn);
+        //return (board[0][2] == playerTurn && board[1][2] == playerTurn && board[2][2] == playerTurn);
+        //return false;
     }
 
     public static bool DiagonalWin()
