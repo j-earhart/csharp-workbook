@@ -19,16 +19,21 @@ public class Program
     
     // game board
     public static string[][] board = new string[allowedAttempts][];
-    
+
+    public static bool isSolved = false;
     
     public static void Main()
     {
-        CreateBoard();
-        DrawBoard();
-        char[] guess = new char[4];
-        Console.WriteLine("Enter Guess:");
-        guess = Console.ReadLine().ToCharArray();
-        CheckSolution(guess);
+        while (!isSolved)
+        {
+            CreateBoard();
+            DrawBoard();
+            char[] guess = new char[4];
+            Console.WriteLine("Enter Guess:");
+            guess = Console.ReadLine().ToCharArray();
+            CheckSolution(guess);
+            Console.ReadLine();
+        }
         return;
     }
     
@@ -40,9 +45,10 @@ public class Program
 
         if (GuessString == SolutionString)
         {
+            isSolved = true;
             return true;
         }
-
+        GenerateHint (guess);
         return false;
     }
     
@@ -53,8 +59,21 @@ public class Program
         int correctLetterLocations = 0;
         for (int i = 0; i < solutionClone.Length; i++)
         {
+           if (solutionClone[i] == guess[i])
+            {
+                correctLetterLocations++;
+            }
 
+            //Add guess to board
+
+            board[numTry][i] = guess[i].ToString();
         }
+
+        board[numTry][4] = correctLetterLocations.ToString();
+        numTry++;
+        //return correctLetterLocations;
+        //Console.WriteLine("You have {0} correct!", correctLetterLocations);
+        
         return " ";
     }
     
